@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://daivjbh73hrqo"]
+
+[ext_resource type="Texture2D" uid="uid://bdxhpu2hr244n" path="res://models/park/ground/tex_ground.png" id="1_iyfwy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_33u4n"]
+albedo_texture = ExtResource("1_iyfwy")
+
+[node name="CSGBox3D" type="CSGBox3D"]
+material_override = SubResource("StandardMaterial3D_33u4n")
+use_collision = true
+size = Vector3(50, 0.1, 50)

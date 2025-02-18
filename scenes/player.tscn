@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://bafk71m51ehjb"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_j7d1x"]
+[ext_resource type="PackedScene" uid="uid://ce3u2wafu5w14" path="res://models/player/characterMedium.fbx" id="2_ib4e5"]
+[ext_resource type="AnimationLibrary" uid="uid://dxpejgkcw0snn" path="res://models/player/idle.fbx" id="3_ko088"]
+[ext_resource type="AnimationLibrary" uid="uid://d3mdmuhjj6p66" path="res://models/player/jump.fbx" id="4_w14hc"]
+[ext_resource type="AnimationLibrary" uid="uid://d2b4jeynaut4e" path="res://models/player/run.fbx" id="5_d43dl"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_61a85"]
+radius = 0.416791
+height = 1.67312
+
+[node name="Player" type="CharacterBody3D"]
+collision_layer = 2
+script = ExtResource("1_j7d1x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.32561, 0, 0, 0, 1, 0, 1.10055, 0)
+shape = SubResource("CapsuleShape3D_61a85")
+
+[node name="CameraOrigin" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54973, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraOrigin"]
+spring_length = 4.0
+margin = 0.5
+
+[node name="Camera3D" type="Camera3D" parent="CameraOrigin/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.15236)
+
+[node name="Model" parent="." instance=ExtResource("2_ib4e5")]
+transform = Transform3D(-0.6, 0, -9.05975e-08, 0, 0.6, 0, 9.05975e-08, 0, -0.6, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Model"]
+libraries = {
+"idle": ExtResource("3_ko088"),
+"jump": ExtResource("4_w14hc"),
+"run": ExtResource("5_d43dl")
+}
+autoplay = "idle/Root|Idle"

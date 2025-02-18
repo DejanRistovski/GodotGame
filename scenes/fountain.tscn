@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bim7l4jpqdrcx"]
+
+[ext_resource type="PackedScene" uid="uid://cvxlcs1gnubia" path="res://models/park/fountain/fountain.glb" id="1_qsgvr"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_oqqx7"]
+height = 4.05837
+radius = 3.1092
+
+[node name="Fountain" type="StaticBody3D"]
+
+[node name="fountain" parent="." instance=ExtResource("1_qsgvr")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57162, 0)
+shape = SubResource("CylinderShape3D_oqqx7")
